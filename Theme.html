@@ -1,0 +1,1000 @@
+{block:Options}
+	<meta name="text:Your Tumblr Username" content="staff" />
+	<meta name="text:Analytics Tracking Code" content="" />
+{/block:Options}
+<!DOCTYPE html>
+<html lang="{block:English}en-US{/block:English}{block:German}de-DE{/block:German}{block:French}fr-FR{/block:French}{block:Italian}it-IT{/block:Italian}{block:Japanese}ja-JP{/block:Japanese}{block:Turkish}tr-TR{/block:Turkish}{block:Spanish}es-ES{/block:Spanish}{block:Russian}ru-RU{/block:Russian}{block:Polish}pl-PL{/block:Polish}{block:PortuguesePT}pt-PT{/block:PortuguesePT}{block:PortugueseBR}pt-BR{/block:PortugueseBR}{block:Dutch}nl-NL{/block:Dutch}{block:Korean}ko-KR{/block:Korean}{block:ChineseSimplified}zh-CN{/block:ChineseSimplified}{block:ChineseTraditional}zh-TW{/block:ChineseTraditional}{block:ChineseHK}zh-HK{/block:ChineseHK}{block:Indonesian}id-ID{/block:Indonesian}{block:Hindi}hi-IN{/block:Hindi}">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		{block:HomePage}
+			<title>{Title}</title>
+		{/block:HomePage}
+		{block:PermalinkPage}
+			<title>{block:PostSummary}{PostSummary} &mdash; {/block:PostSummary}{Title}</title>
+		{/block:PermalinkPage}
+		{block:SearchPage}
+			<title>{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results found}{/block:NoSearchResults} &mdash; {Title}</title>
+		{/block:SearchPage}
+		{block:TagPage}
+			<title>{lang:Posts tagged Tag} &mdash; {Title}</title>
+		{/block:TagPage}
+		{block:DayPage}
+			<title>{lang:Viewing everything posted on Month DayOfMonth Year} &mdash; {Title}</title>
+		{/block:DayPage}
+		<meta name="description" content="{MetaDescription}" />
+		<meta name="theme-color" content="{AccentColor}" />
+		<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+		<link rel="shortcut icon" href="{Favicon}" />
+		<link rel="stylesheet" href="https://assets.tumblr.com/fonts/favorit/stylesheet.css?v=1" />
+		<style id="theme-options">
+			:root {
+				--accent: {RGBAccentColor}; /* {AccentColor} */
+				--background: {RGBBackgroundColor}; /* {BackgroundColor} */
+				--title: {RGBTitleColor}; /* {TitleColor} */
+				--title-font: {TitleFont};
+				--title-font-weight: {TitleFontWeight};
+			}
+		</style>
+		
+		<style id="reset-css">
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+			   v2.0 | 20110126
+			   License: none (public domain)
+			*/
+
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, embed, 
+			figure, figcaption, footer, header, hgroup, 
+			menu, nav, output, ruby, section, summary,
+			time, mark, audio, video {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+			}
+			/* HTML5 display-role reset for older browsers */
+			article, aside, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section {
+				display: block;
+			}
+			body {
+				line-height: 1;
+			}
+			ol, ul {
+				list-style: none;
+			}
+			blockquote, q {
+				quotes: none;
+			}
+			blockquote:before, blockquote:after,
+			q:before, q:after {
+				content: '';
+				content: none;
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+		</style>
+		
+		<style>
+			html {
+				box-sizing: border-box;
+				hyphens: auto;
+				word-break: break-word;
+			}
+			
+			*,
+			*::before,
+			*::after {
+				box-sizing: inherit;
+			}
+		
+			::selection {
+				background-color: rgb(var(--accent));
+				color: rgb(var(--background));
+			}
+			
+			body {
+				background-color: rgba(var(--background), 0.25);
+				color: rgb(var(--title));
+				display: flex;
+				flex-flow: column nowrap;
+				min-height: 100vh;
+			}
+			
+			.container {
+				font-size: 1rem;
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 50rem;
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+			
+			.blog-content {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 40rem;
+				width: 100%;
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+				margin-bottom: auto;
+			}
+			
+			.post {
+				margin-bottom: 5rem;
+			}
+			
+			header .container {
+				display: flex;
+				flex-flow: column nowrap;
+				gap: 1rem;
+				padding-top: 1rem;
+				padding-bottom: 1rem;
+			}
+		</style>
+		
+		<style id="text-elements">
+			body {
+				font-family: 'Favorit', sans-serif;
+				font-size: 1.25rem;
+				max-width: 100vw;
+				overflow-x: hidden;
+				line-height: 1.5;
+			}
+			
+			p, ul, ol, dl,
+			blockquote, pre,
+			h1, h2, h3, h4, h5, h6,
+			video, audio, iframe, figure {
+				margin-bottom: 1.5rem;
+			}
+			
+			/* Formatting */
+			strong, b {
+				font-weight: bold;
+			}
+			
+			em, i {
+				font-style: italic;
+			}
+			
+			small, sub, sup {
+				font-size: 75%;
+			}
+			
+			sub {
+				vertical-align: bottom;
+			}
+			
+			sup {
+				vertical-align: top;
+			}
+			
+			strike {
+				text-decoration-style: wavy;
+				text-decoration-thickness: 2px;
+			}
+			
+			/* Links */
+			a {
+				color: var(--title);
+				text-decoration-thickness: 0.2em;
+				text-decoration-color: rgba(var(--accent), 0.25);
+				transition: color 160ms ease;
+			}
+			
+			a:hover,
+			a:focus {
+				color: rgb(var(--accent));
+			}
+			
+			/* Headings */
+			h1, h2, h3, h4, h5, h6 {
+				font-family: var(--title-font);
+				line-height: 1.125;
+			}
+		
+			h1 {
+				font-size: 2rem;
+			}
+			
+			h2 {
+				font-size: 1.75rem;
+			}
+			
+			h3 {
+				font-size: 1.5rem;
+			}
+			
+			h4 {
+				font-size: 1.25rem;
+			}
+			
+			h5 {
+				font-size: 1rem;
+			}
+			
+			h6 {
+				font-size: 0.75rem;
+			}
+			
+			/* Lists */
+			ul, ol {
+				padding-left: 1rem;
+			}
+			
+			li {
+				list-style-position: outside;
+				padding-left: 0.5rem;
+			}
+			
+			li:not(:first-child) {
+				margin-top: 0.25rem;
+			}
+			
+			li:not(:last-child) {
+				margin-bottom: 0.25rem;
+			}
+			
+			li ol,
+			li ul {
+				margin-bottom: 0;
+			}
+			
+			ul {
+				list-style: disc;
+			}
+			
+			ul ul {
+				list-style: square;
+			}
+			
+			ol {
+				list-style: decimal;
+			}
+			
+			ol ol {
+				list-style: lower-alpha;
+			}
+			
+			/* Blockquotes */
+			blockquote {
+				padding-left: 1.5rem;
+				border-left: 2px solid rgb(var(--title));
+			}
+			
+			/* Code and pre-formatted text */
+			pre {
+				max-width: 100%;
+				overflow-x: auto;
+			}
+			
+			pre, code, .npf_chat {
+				font-family: Source Code Pro, monospace;
+				font-size: 0.875em;
+			}
+			
+			/* Media */
+			.post div.npf-link-block {
+				width: 100%;
+				border: 2px solid rgb(var(--title));
+				border-radius: 0;
+				box-shadow: -0.25rem -0.25rem 0 rgb(var(--accent));
+				padding: 0.25rem;
+				margin-bottom: 1.5rem;
+			}
+			
+			.post div.npf-link-block .poster::before {
+				background-color: rgba(var(--background), 0.75);
+				backdrop-filter: blur(5px);
+				-webkit-backdrop-filter: blur(5px);
+				opacity: 1;
+			}
+			
+			.post div.npf-link-block .poster .title {
+				color: rgb(var(--title));
+				text-align: left;
+			}
+			
+			.tmblr-full {
+				margin-bottom: 1.5rem;
+			}
+			
+			
+			.tmblr-full img,
+			.tmblr-embed,
+			.tumblr_video_iframe {
+				box-sizing: border-box;
+				max-width: 100%;
+				box-shadow: -0.25rem -0.25rem 0 rgb(var(--accent));
+				border: 2px solid rgb(var(--title));
+				padding: 0.25rem;
+			}
+			
+			.tmblr-embed,
+			.tumblr_video_iframe {
+				display: block;
+				line-height: 0;
+			}
+			
+			.tmblr-embed iframe {
+				margin-bottom: 0;
+			}
+			
+			iframe, video, audio, img {
+				max-width: 100%;
+			}
+			
+			iframe[src*="youtu"],
+			iframe[src*="twitch"],
+			iframe[src*="vimeo"] {
+				aspect-ratio: 16 / 9;
+				width: 100%;
+				height: auto;
+			}
+			
+			iframe[src*="spotify"],
+			figure[data-npf*="spotify"] {
+				height: 80px !important;
+			}
+			
+			/* Separator */
+			hr {
+				height: 2px;
+				max-width: 15rem;
+				margin: 2.5rem auto;
+				display: block;
+				border: none;
+				background-color: rgb(var(--title));
+			}
+		</style>
+		
+		<style id="avatar">
+			.avatar {
+				border-radius: 0.3rem;
+			}
+			
+			.avatar.circle {
+				border-radius: 50%;
+			}
+		</style>
+		
+		<style id="site-header">
+			.site_header {
+				background-color: rgba(var(--background), 0.25);
+				margin-bottom: 3rem;
+				border-bottom: 2px solid rgb(var(--title));
+			}
+			
+			.site_header .container {
+				align-items: center;
+				display: flex;
+				flex-flow: column nowrap;
+				gap: 1rem;
+			}
+			
+			.branding {
+				text-decoration: none;
+				display: flex;
+				flex-flow: row nowrap;
+				align-items: center;
+				gap: 1rem;
+			}
+			
+			.branding:hover {
+				text-decoration-color: rgb(var(--accent));
+			}
+			
+			.branding .avatar {
+				width: 3rem;
+				height: 3rem;
+			}
+			
+			.blog-name {
+				margin-top: 0;
+				margin-bottom: 0;
+				color: rgb(var(--title));
+				transition: color 160ms ease;
+				font-weight: var(--title-font-weight, 700);
+			}
+			
+			.branding:hover .blog-name {
+				color: rgb(var(--accent));
+			}
+			
+			{block:HideTitle}
+				.branding .avatar {
+					width: 5rem;
+					height: 5rem;
+				}
+			{/block:HideTitle}
+			
+			.main-menu {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: center;
+				gap: 1rem;
+			}
+			
+			@media screen and (max-width: 600px) {
+				.main-menu {
+					max-width: 100%;
+					justify-content: flex-start;
+					flex-flow: row nowrap;
+					overflow-x: auto;
+					padding-bottom: 0.5rem;
+					-webkit-overflow-scrolling: touch;
+					-ms-overflow-style: -ms-autohiding-scrollbar;
+					scrollbar-width: thin;
+
+				}
+			}
+			
+			.main-menu a {
+				flex: 0 0 auto;
+			}
+		</style>
+		
+		<style id="post_meta">
+			.post_meta {
+				border-top: 2px solid rgb(var(--title));
+				max-width: 20rem;
+				font-size: 0.875rem;
+				padding-top: 0.75rem;
+				margin-top: 2rem;
+			}
+			
+			.post_meta ul {
+				margin-bottom: 0;
+				list-style: none;
+			}
+			
+			.post_meta li {
+				padding-left: 0;
+			}
+			
+			.post_meta a {
+				font-weight: 700;
+			}
+			
+			.post_meta a[rel="tag"]:not(:last-of-type)::after {
+				content: ", ";
+			}
+			
+			.post_meta a[rel="tag"]:last-of-type::after {
+				content: ".";
+			}
+		</style>
+		
+		{block:ShowHeaderImage}
+			<style id="header-image">
+				.site_header {
+					background-image: url({HeaderImage});
+					background-size: contain;
+				}
+				
+				{block:StretchHeaderImage}
+					.site_header {
+						background-size: cover;
+					}
+				{/block:StretchHeaderImage}
+			</style>
+		{/block:ShowHeaderImage}
+		
+		<style id="site-footer">
+			.site_footer {
+				margin-top: 3rem;
+				border-top: 2px solid rgb(var(--title));
+				background-color: rgba(var(--background), 0.25);
+				padding-top: 1.5rem;
+				padding-bottom: 1.5rem;
+			}
+			
+			.site_footer .container {
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: center;
+				gap: 1rem;
+			}
+			
+			.site_footer #description {
+				margin-bottom: 0;
+			}
+			
+			.site_footer nav {
+				font-weight: 700;
+				display: flex;
+				flex-flow: row nowrap;
+				gap: 1rem;
+			}
+		</style>
+		
+		<style id="reblogs">
+			.trail-item {
+				margin-bottom: 1.5rem;
+			}
+			
+			.trail-blog,
+			.ask-item .user {
+				border-top: 2px solid rgb(var(--title));
+				display: inline-flex;
+				align-items: center;
+				gap: 1rem;
+				padding-top: 0.5rem;
+				padding-bottom: 0.5rem;
+				text-decoration: none;
+				font-size: 0.875rem;
+			}
+			
+			.trail-blog img {
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+			
+			.ask-item a {
+				font-weight: 700;
+			}
+			
+			.ask-item blockquote {
+				border-left: none;
+				padding: 1.5rem;
+				background-color: rgba(var(--accent), 0.25);
+			}
+			
+			.ask-item blockquote > *:last-child {
+				margin-bottom: 0;
+			}
+			
+			#notes {
+				margin-top: 3rem;
+				
+			}
+			
+			#notes .notes {
+				list-style: none;
+				font-size: 0.875rem;
+			}
+			
+			#notes .notes li {
+				padding-left: 0;
+				display: flex;
+				flex-flow: row wrap;
+				align-items: flex-start;
+				gap: 0.25rem;
+				margin-botton: 1rem;
+			}
+			
+			#notes .notes .avatar_frame {
+				flex-shrink: 0;
+			}
+			
+			#notes .notes img {
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+			
+			#notes .notes .action a {
+				font-weight: 700;
+			}
+			
+			#notes .notes blockquote {
+				flex-basis: 100%;
+				flex-shrink: 0;
+				border-left: 0;
+				padding: 0.25rem 0.5rem;
+				background: rgba(var(--background), 0.25);
+				margin-bottom: 0;
+			}
+			
+			#notes .notes blockquote a {
+				text-decoration: none;
+			}
+			
+			.more_notes_link_container {
+				border-top: 2px solid rgb(var(--title));
+				text-align: center;
+			}
+			
+			.more_notes_link_container a {
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding: 0.5rem;
+				font-weight: 700;
+				text-decoration: none;
+			}
+			
+			#pagination {
+				display: flex;
+				flex-flow: row nowrap;
+				align-items: flex-start;
+			}
+			
+			#pagination a {
+				opacity: 0.25;
+				border-top: 2px solid rgb(var(--title));
+				font-weight: 700;
+				flex: 1 0 50%;
+				text-align: center;
+				font-size: 0.875rem;
+				padding: 0.5rem 0.25rem;
+			}
+			
+			#pagination a[href] {
+				opacity: 1;
+			}
+		</style>
+		
+		<style id="custom-css">
+			{CustomCSS}
+		</style>
+	</head>
+	<body>
+		<header class="site_header">
+			<div class="container">
+				<a class="branding" href="{BlogURL}" {Target}>
+					{block:ShowAvatar}
+						<img
+							class="avatar {AvatarShape}"
+							src="{PortraitURL-128}"
+							alt="{block:HideTitle}{Title}{/block:HideTitle}"
+							{block:ShowTitle}role="presentation"{/block:ShowTitle}
+						/>
+					{/block:ShowAvatar}
+					{block:ShowTitle}
+						<h1 class="blog-name">
+							{Title}
+						</h1>
+					{/block:ShowTitle}
+				</a>
+				
+				<nav class="main-menu" aria-label="{lang:Navigate}">
+					{block:HasPages}
+						{block:Pages}
+							<a href="{URL}" {Target}>{Label}</a>
+						{/block:Pages}
+					{/block:HasPages}
+					{block:AskEnabled}
+						<a href="/ask" {Target}>{AskLabel}</a>
+					{/block:AskEnabled}
+					{block:SubmissionsEnabled}
+						<a href="/submit" {Target}>{SubmitLabel}</a>
+					{/block:SubmissionsEnabled}
+					{block:Likes}
+						<a href="/likes" {Target}>{lang:Likes}</a>
+					{/block:Likes}
+					<a href="/archive" {Target}>{lang:Archive}</a>
+					<a href="/random" {Target}>{lang:Random}</a>
+				</nav>
+			</div>
+		</header>
+		
+		<main class="blog-content">
+			{block:SearchPage}
+				{block:NoSearchResults}
+					<h1>{lang:No results found}</h1>
+				{/block:NoSearchResults}
+			{/block:SearchPage}
+			{block:TagPage}
+				<h1>{lang:Posts tagged Tag}</h1>
+			{/block:TagPage}
+			{block:DayPage}
+				<h1>{lang:Viewing everything posted on Month DayOfMonth Year}</h1>
+			{/block:DayPage}
+			{block:NoPosts}
+				<h1>{lang:This Tumblr hasnt made any posts}</h1>
+			{/block:NoPosts}
+			
+			{block:Posts inlineMediaWidth="640"}
+				<article {block:Date}id="{PostID}"{/block:Date} class="{PostType} post">
+					{block:Text}
+						{block:Title}
+							<h1>{Title}</h1>
+						{/block:Title}
+					{/block:Text}
+					
+					{block:Photo}
+						<figure {block:HighRes}class="tmblr-full"{/block:HighRes}>
+							<a href="/image/{PostID}">
+								<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
+							</a>
+							
+							{block:LinkURL}
+								<a class="link-url" href="{LinkURL}" style="max-width: {PhotoWidth-HighRes}px" {Target}>
+									{LinkURL}
+								</a>
+							{/block:LinkURL}
+						</figure>
+					{/block:Photo}
+					
+					{block:Panorama}
+						<figure {block:HighRes}class="tmblr-full"{/block:HighRes}>
+							{LinkOpenTag}
+								<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
+							{LinkCloseTag}
+						</figure>
+					{/block:Panorama}
+					
+					{block:Photoset}
+						{Photoset}
+					{/block:Photoset}
+					
+					{block:Quote}
+						<p class="npf_quote" data-quote-length="{Length}">
+							{Quote}
+						</p>
+						
+						{block:Source}
+							<p>{Source}</p>
+						{/block:Source}
+					{/block:Quote}
+					
+					{block:Link}
+						<div class="npf-link-block {block:Thumbnail}has-poster not-{/block:Thumbnail}no-poster">
+							<a href="{URL}" {Target}>
+								{block:Thumbnail}
+									<div class="poster" style="background-image: url({Thumbnail-HighRes});">
+								{/block:Thumbnail}
+									
+								<div class="title">{Name}</div>
+								
+								{block:Thumbnail}
+									</div>
+								{/block:Thumbnail}
+								
+								<div class="bottom">
+									{block:Excerpt}
+										<div class="description">{Excerpt}</div>
+									{/block:Excerpt}
+									
+									{block:Host}
+										<div class="site-name">{Host}</div>
+									{/block:Host}
+								</div>
+							</a>
+						</div>
+					{/block:Link}
+					
+					{block:Chat}
+						{block:Title}
+							<h1>{Title}</h1>
+						{/block:Title}
+						
+						{block:Lines}
+							<p class="npf_chat">
+								{block:Label}
+									<b>{Label}</b>
+								{/block:Label}
+								
+								{Line}
+							</p>
+						{/block:Lines}
+					{/block:Chat}
+					
+					{block:Audio}
+						{block:AudioEmbed}
+							{AudioEmbed-640}
+						{/block:AudioEmbed}
+					{/block:Audio}
+					
+					{block:Video}
+						{VideoEmbed-500}
+					{/block:Video}
+					
+					{block:Answer}
+						<div class="ask-item">
+							<div>
+								<span class="user">
+									{lang:Asker asked 2}:
+								</span>
+								
+								<blockquote>{Question}</blockquote>
+							</div>
+						</div>
+					
+						{block:Answerer}
+							<div class="ask-item">
+								<div>
+									<span class="user">{lang:Answered}:</span>
+									<blockquote>{Answer}</blockquote>
+								</div>
+							</div>
+						{/block:Answerer}
+					{/block:Answer}
+					
+					{block:Reblogs}
+						<div class="trail-item">
+							<a class="trail-blog" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink} {Target}>
+								{block:HasAvatar}
+									<img class="avatar" src="{PortraitURL-64}" aria-hidden="true">
+								{/block:HasAvatar}
+								
+								<strong class="username">{Username}</strong>
+							</a>
+							
+							<div class="trail-content">
+								{Body}
+							</div>
+						</div>
+					{/block:Reblogs}
+					
+					{block:NotReblog}
+						{block:Text}
+							{Body}
+						{/block:Text}
+						
+						{block:Photo}
+							{block:Caption}
+								{Caption}
+							{/block:Caption}
+						{/block:Photo}
+						
+						{block:Panorama}
+							{block:Caption}
+								{Caption}
+							{/block:Caption}
+						{/block:Panorama}
+						
+						{block:Photoset}
+							{block:Caption}
+								{Caption}
+							{/block:Caption}
+						{/block:Photoset}
+						
+						{block:Link}
+							{block:Description}
+								{Description}
+							{/block:Description}
+						{/block:Link}
+						
+						{block:Audio}
+							{block:Caption}
+								{Caption}
+							{/block:Caption}
+						{/block:Audio}
+						
+						{block:Video}
+							{block:Caption}
+								{Caption}
+							{/block:Caption}
+						{/block:Video}
+						
+						{block:Answer}
+							{Answer}
+						{/block:Answer}
+					{/block:NotReblog}
+					
+					{block:Date}
+						<footer class="post_meta">
+							<ul>
+								{block:PinnedPostLabel}
+									<li>{PinnedPostLabel}</li>
+								{/block:PinnedPostLabel}
+								<li>
+									<a href="{Permalink}" rel="bookmark" {Target}>
+										<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{TimeAgo}</time>
+									</a>
+								</li>
+								{block:Submission}
+									<li>
+										{lang:Submitted By}
+									</li>
+								{/block:Submission}
+								<li
+									{block:Submission}hidden{/block:Submission}
+								>
+								   {lang:By PostAuthorName 2}
+								</li>
+								{block:RebloggedFrom}
+									<li>
+										{lang:Originally from ReblogRootName 2}
+									</li>
+								{/block:RebloggedFrom}
+								{block:Actions}
+									<a class="post-action" href="{URL}" {Target}>{Text}</a>
+								{/block:Actions}
+								{block:ContentSource}
+									<li>
+										{lang:Source}:
+										<a href="{SourceURL}" {Target}>{SourceTitle}</a>
+									</li>
+								{/block:ContentSource}
+								{block:HasTags}
+									<li>
+										{lang:Tags}:
+										{block:Tags}
+											<a href="{TagURL}" rel="tag">{Tag}</a>
+										{/block:Tags}
+									</li>
+								{/block:HasTags}
+								{block:NoteCount}
+									<li>
+										<a class="note-count" href="{Permalink}#notes">
+											{NoteCountWithLabel}
+										</a>
+									</li>
+								{/block:NoteCount}
+							</ul>
+						</footer>
+					{/block:Date}
+					
+					{block:PermalinkPage}
+						{block:PostNotes}
+							<section id="notes">
+								<h3>{NoteCountWithLabel}</h3>
+								{PostNotes-64}
+							</section>
+						{/block:PostNotes}
+					{/block:PermalinkPage}
+				</article>
+			{/block:Posts}
+			
+			{block:Pagination}
+				<nav id="pagination" aria-label="{lang:Pages}">
+					<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} rel="prev">
+						{lang:Back}
+					</a>
+					
+					<a {block:NextPage}href="{NextPage}"{/block:NextPage} rel="next">
+						{lang:Next}
+					</a>
+				</nav>
+			{/block:Pagination}
+			
+			{block:PermalinkPagination}
+				<nav id="pagination" aria-label="{lang:Pages}">
+					<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} rel="prev">
+						{lang:Previous post}
+					</a>
+					
+					<a {block:NextPost}href="{NextPost}"{/block:NextPost} rel="next">
+						{lang:Next post}
+					</a>
+				</nav>
+			{/block:PermalinkPagination}
+			
+			{block:DayPagination}
+				<nav id="pagination" aria-label="{lang:Pages}">
+					<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} rel="prev">
+						{lang:Previous day}
+					</a>
+					<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} rel="next">
+						{lang:Next day}
+					</a>
+				</nav>
+			{/block:DayPagination}
+		</main>
+		
+		<footer class="site_footer">
+			<div class="container">
+				{block:ShowDescription}
+					<p id="description">{Description}</p>
+				{/block:ShowDescription}
+				
+				<nav>
+					{block:IfYourTumblrUsername}
+					<a href="https://www.tumblr.com/follow/{text:Your Tumblr Username}" {Target}>{lang:Follow on Tumblr}</a>
+					{/block:IfYourTumblrUsername}
+					<a href="{RSS}" {Target}>{lang:Subscribe via RSS}</a>
+				</nav>
+			</div>
+		</footer>
+		
+		{block:IfAnalyticsTrackingCode}
+			{text:Analytics Tracking Code}
+		{/block:IfAnalyticsTrackingCode}
+	</body>
+</html>
