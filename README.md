@@ -1,6 +1,8 @@
 # Shermy
 
-A simple blog theme for Tumblr, based on [Startr](https://github.com/arthrfrts/startr).
+A simple blog theme for Tumblr, based on [Startr](https://github.com/arthrfrts/startr). It supports both classic post formats and NPF posts, with styles that match what you see in your Dashboard while maintaining an unique feel in your blog.
+
+[See it live here!](https://shermy-theme.tumblr.com/)
 
 **Features include:**
 
